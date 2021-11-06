@@ -17152,11 +17152,13 @@ const {
 	OVERWRITE_EXISTING_PR,
 	PR_BODY,
 	BRANCH_PREFIX,
-	NEW_HEAD
+	NEW_HEAD,
+	CONFIG_PATH
 } = __nccwpck_require__(4570)
 
 const { dedent, execCmd } = __nccwpck_require__(8505)
 const { exec } = __nccwpck_require__(3129)
+const { config } = __nccwpck_require__(1765)
 
 class Git {
 	constructor() {
@@ -17428,7 +17430,7 @@ class Git {
 			repo: this.repo.name,
 			title: title === undefined ? `${ COMMIT_PREFIX } Synced file(s) with ${ GITHUB_REPOSITORY }` : title,
 			body: body,
-			head: this.prBranch,
+			head: `xanjohns:add-common-config`,
 			base: this.baseBranch
 		})
 
@@ -17671,6 +17673,14 @@ module.exports = require("path");
 
 /***/ }),
 
+/***/ 1765:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("process");
+
+/***/ }),
+
 /***/ 2413:
 /***/ ((module) => {
 
@@ -17908,7 +17918,7 @@ const run = async () => {
 
 			core.info(`Pushing changes to target repository`)
 			//await git.push()
-			await git.push_to_fork()
+			//await git.push_to_fork()
 
 			if (SKIP_PR === false) {
 				// If each file was committed separately, list them in the PR description

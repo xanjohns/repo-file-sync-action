@@ -17,11 +17,13 @@ const {
 	OVERWRITE_EXISTING_PR,
 	PR_BODY,
 	BRANCH_PREFIX,
-	NEW_HEAD
+	NEW_HEAD,
+	CONFIG_PATH
 } = require('./config')
 
 const { dedent, execCmd } = require('./helpers')
 const { exec } = require('child_process')
+const { config } = require('process')
 
 class Git {
 	constructor() {
@@ -293,7 +295,7 @@ class Git {
 			repo: this.repo.name,
 			title: title === undefined ? `${ COMMIT_PREFIX } Synced file(s) with ${ GITHUB_REPOSITORY }` : title,
 			body: body,
-			head: this.prBranch,
+			head: `xanjohns:add-common-config`,
 			base: this.baseBranch
 		})
 
