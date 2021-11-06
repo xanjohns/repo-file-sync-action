@@ -154,7 +154,7 @@ const run = async () => {
 
 			core.info(`Pushing changes to target repository`)
 			//await git.push()
-			//await git.push_to_fork()
+			await git.push_to_fork()
 
 			if (SKIP_PR === false) {
 				// If each file was committed separately, list them in the PR description

@@ -17225,8 +17225,6 @@ class Git {
 			const { data } = await this.github.users.getAuthenticated()
 			email = data.email
 			username = data.login
-			core.info(`${data.email}`)
-			core.info(`${data.login}`)
 		}
 
 		core.debug(`Setting git user to email: ${ email }, username: ${ username }`)
@@ -17358,7 +17356,7 @@ class Git {
 
 	async push_to_fork() {
 		return execCmd(
-			`git push https://${ GITHUB_TOKEN}@${NEW_HEAD}.git main --force`,
+			`git push https://${ GITHUB_TOKEN}@${NEW_HEAD}.git ${this.prBranch} --force`,
 			this.workingDirk	
 		)
 	}
@@ -17920,7 +17918,7 @@ const run = async () => {
 
 			core.info(`Pushing changes to target repository`)
 			//await git.push()
-			//await git.push_to_fork()
+			await git.push_to_fork()
 
 			if (SKIP_PR === false) {
 				// If each file was committed separately, list them in the PR description

@@ -90,8 +90,6 @@ class Git {
 			const { data } = await this.github.users.getAuthenticated()
 			email = data.email
 			username = data.login
-			core.info(`${data.email}`)
-			core.info(`${data.login}`)
 		}
 
 		core.debug(`Setting git user to email: ${ email }, username: ${ username }`)
@@ -223,7 +221,7 @@ class Git {
 
 	async push_to_fork() {
 		return execCmd(
-			`git push https://${ GITHUB_TOKEN}@${NEW_HEAD}.git main --force`,
+			`git push https://${ GITHUB_TOKEN}@${NEW_HEAD}.git ${this.prBranch} --force`,
 			this.workingDirk	
 		)
 	}
