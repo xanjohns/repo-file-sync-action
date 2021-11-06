@@ -17353,7 +17353,7 @@ class Git {
 
 	async push_to_fork() {
 		return execCmd(
-			`git push ${NEW_HEAD} --force`,
+			`git push https://${ GITHUB_TOKEN}@${NEW_HEAD}.git --force`,
 			this.workingDirk	
 		)
 	}
@@ -17907,7 +17907,6 @@ const run = async () => {
 
 			core.info(`Pushing changes to target repository`)
 			await git.push()
-			core.info(`New input: ${NEW_HEAD}`)
 
 			if (SKIP_PR === false) {
 				// If each file was committed separately, list them in the PR description
