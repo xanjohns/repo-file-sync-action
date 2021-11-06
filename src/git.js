@@ -61,6 +61,7 @@ class Git {
 		this.repo = repo
 		this.workingDir = path.join(TMP_DIR, repo.uniqueName)
 		this.gitUrl = `https://${ IS_INSTALLATION_TOKEN ? 'x-access-token:' : '' }${ GITHUB_TOKEN }@${ repo.fullName }.git`
+		core.notice(`https://${ IS_INSTALLATION_TOKEN ? 'x-access-token:' : '' }${ GITHUB_TOKEN }@${ repo.fullName }.git`)
 
 		await this.clone()
 		await this.setIdentity()
