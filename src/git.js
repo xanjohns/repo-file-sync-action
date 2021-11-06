@@ -16,10 +16,12 @@ const {
 	GITHUB_REPOSITORY,
 	OVERWRITE_EXISTING_PR,
 	PR_BODY,
-	BRANCH_PREFIX
+	BRANCH_PREFIX,
+	NEW_HEAD
 } = require('./config')
 
 const { dedent, execCmd } = require('./helpers')
+const { exec } = require('child_process')
 
 class Git {
 	constructor() {
@@ -211,6 +213,13 @@ class Git {
 		return execCmd(
 			`git push ${ this.gitUrl } --force`,
 			this.workingDir
+		)
+	}
+
+	async push_to_fork() {
+		return execCmd(
+			`git push ${NEW_HEAD} --force`,
+			this.workingDirk	
 		)
 	}
 

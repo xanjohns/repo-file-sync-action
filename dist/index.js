@@ -16993,6 +16993,9 @@ try {
 		BRANCH_PREFIX: getInput({
 			key: 'BRANCH_PREFIX',
 			default: 'repo-sync/SOURCE_REPO_NAME'
+		}),
+		NEW_HEAD: getInput({
+			key: 'NEW_HEAD',
 		})
 	}
 
@@ -17148,10 +17151,12 @@ const {
 	GITHUB_REPOSITORY,
 	OVERWRITE_EXISTING_PR,
 	PR_BODY,
-	BRANCH_PREFIX
+	BRANCH_PREFIX,
+	NEW_HEAD
 } = __nccwpck_require__(4570)
 
 const { dedent, execCmd } = __nccwpck_require__(8505)
+const { exec } = __nccwpck_require__(3129)
 
 class Git {
 	constructor() {
@@ -17343,6 +17348,13 @@ class Git {
 		return execCmd(
 			`git push ${ this.gitUrl } --force`,
 			this.workingDir
+		)
+	}
+
+	async push_to_fork() {
+		return execCmd(
+			`git push ${NEW_HEAD} --force`,
+			this.workingDirk	
 		)
 	}
 
@@ -17757,7 +17769,8 @@ const {
 	OVERWRITE_EXISTING_PR,
 	SKIP_PR,
 	ORIGINAL_MESSAGE,
-	COMMIT_AS_PR_TITLE
+	COMMIT_AS_PR_TITLE,
+	NEW_HEAD
 } = __nccwpck_require__(4570)
 
 const run = async () => {
@@ -17894,6 +17907,7 @@ const run = async () => {
 
 			core.info(`Pushing changes to target repository`)
 			await git.push()
+			core.info(`New input: ${NEW_HEAD}`)
 
 			if (SKIP_PR === false) {
 				// If each file was committed separately, list them in the PR description

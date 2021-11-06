@@ -16,7 +16,8 @@ const {
 	OVERWRITE_EXISTING_PR,
 	SKIP_PR,
 	ORIGINAL_MESSAGE,
-	COMMIT_AS_PR_TITLE
+	COMMIT_AS_PR_TITLE,
+	NEW_HEAD
 } = require('./config')
 
 const run = async () => {
@@ -153,6 +154,7 @@ const run = async () => {
 
 			core.info(`Pushing changes to target repository`)
 			await git.push()
+			core.info(`New input: ${NEW_HEAD}`)
 
 			if (SKIP_PR === false) {
 				// If each file was committed separately, list them in the PR description
