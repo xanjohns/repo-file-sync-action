@@ -90,6 +90,8 @@ class Git {
 			const { data } = await this.github.users.getAuthenticated()
 			email = data.email
 			username = data.login
+			core.info(`${data.email}`)
+			core.info(`${data.login}`)
 		}
 
 		core.debug(`Setting git user to email: ${ email }, username: ${ username }`)
