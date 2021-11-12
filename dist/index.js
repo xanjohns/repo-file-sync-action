@@ -17454,7 +17454,7 @@ class Git {
 			head: `xanjohns:${this.prBranch}`,
 			base: this.baseBranch
 		})
-
+		core.info(`USER IS : ${this.repo.user}`)
 		this.existingPr = data
 
 		return data
