@@ -219,6 +219,13 @@ class Git {
 		)
 	}
 
+	async gitLog() {
+		return execCmd(
+			`git log`,
+			this.workingDir
+		)
+	}
+
 	async push() {
 		return execCmd(
 			`git push ${ this.gitUrl } --force`,
