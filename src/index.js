@@ -160,6 +160,7 @@ const run = async () => {
 			core.info(await git.gitLog())
 
 			//await git.push()
+			await git.create_remote()
 			await git.push_to_fork()
 
 			if (SKIP_PR === false) {
