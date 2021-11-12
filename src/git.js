@@ -316,7 +316,7 @@ class Git {
 			repo: this.repo.name,
 			title: title === undefined ? `${ COMMIT_PREFIX } Synced file(s) with ${ GITHUB_REPOSITORY }` : title,
 			body: body,
-			head: `xanjohns:main`,
+			head: `xanjohns:${this.prBranch}`,
 			base: this.baseBranch
 		})
 
