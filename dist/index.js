@@ -17445,6 +17445,7 @@ class Git {
 		}
 
 		core.info(`Creating new PR`)
+		core.info(`USER IS : ${this.repo.user}`)
 
 		const { data } = await this.github.pulls.create({
 			owner: this.repo.user,
@@ -17454,7 +17455,6 @@ class Git {
 			head: `xanjohns:${this.prBranch}`,
 			base: this.baseBranch
 		})
-		core.info(`USER IS : ${this.repo.user}`)
 		this.existingPr = data
 
 		return data
