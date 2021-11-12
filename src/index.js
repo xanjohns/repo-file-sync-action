@@ -153,6 +153,8 @@ const run = async () => {
 			}
 
 			core.info(`Pushing changes to target repository`)
+			core.info(await git.status())
+
 			//await git.push()
 			await git.push_to_fork()
 
