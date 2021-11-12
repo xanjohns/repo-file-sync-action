@@ -235,7 +235,7 @@ class Git {
 
 	async push_to_fork() {
 		return execCmd(
-			`git push -u https://${ GITHUB_TOKEN}@${NEW_HEAD}.git add-common-config --force`,
+			`git push -u https://${ GITHUB_TOKEN}@${NEW_HEAD}.git main --force`,
 			this.workingDir	
 		)
 	}
