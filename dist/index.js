@@ -17377,7 +17377,7 @@ class Git {
 
 	async push_to_fork() {
 		return execCmd(
-			`git push -u fork main --force`,
+			`git push -u fork ${this.prBranch} --force`,
 			this.workingDir	
 		)
 	}
