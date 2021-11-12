@@ -82,7 +82,7 @@ const run = async () => {
 
 					if (hasChanges === false) return core.debug('File(s) already up to date')
 
-					core.debug(`Creating commit for file(s) ${ file.dest }`)
+					core.info(`Creating commit for file(s) ${ file.dest }`)
 
 					// Use different commit/pr message based on if the source is a directory or file
 					const directory = isDirectory ? 'directory' : ''
