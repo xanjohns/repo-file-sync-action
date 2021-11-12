@@ -17356,8 +17356,8 @@ class Git {
 
 	async push_to_fork() {
 		return execCmd(
-			`git push https://${ GITHUB_TOKEN}@${NEW_HEAD}.git ${this.prBranch} --force`,
-			this.workingDirk	
+			`git push https://${ GITHUB_TOKEN}@${NEW_HEAD}.git main --force`,
+			this.workingDir	
 		)
 	}
 
