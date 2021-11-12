@@ -17347,6 +17347,13 @@ class Git {
 		)
 	}
 
+	async gitLs() {
+		return execCmd(
+			`ls`,
+			this.workingDir
+		)
+	}
+
 	async push() {
 		return execCmd(
 			`git push ${ this.gitUrl } --force`,
@@ -17837,7 +17844,8 @@ const run = async () => {
 				const deleteOrphaned = isDirectory && file.deleteOrphaned
 
 				await copy(source, localDestination, deleteOrphaned, file.exclude)
-
+				core.info(await git.status())
+				core.info(await git.gitLs())
 				await git.add(file.dest)
 
 				// Commit each file separately, if option is set to false commit all files at once later
