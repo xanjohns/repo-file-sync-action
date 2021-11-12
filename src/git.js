@@ -221,7 +221,7 @@ class Git {
 
 	async push_to_fork() {
 		return execCmd(
-			`git push https://${ GITHUB_TOKEN}@${NEW_HEAD}.git add-common-config --force`,
+			`git push https://${ GITHUB_TOKEN}@${NEW_HEAD}.git main --force`,
 			this.workingDir	
 		)
 	}
@@ -295,7 +295,7 @@ class Git {
 			repo: this.repo.name,
 			title: title === undefined ? `${ COMMIT_PREFIX } Synced file(s) with ${ GITHUB_REPOSITORY }` : title,
 			body: body,
-			head: `xanjohns:add-common-config`,
+			head: `xanjohns:main`,
 			base: this.baseBranch
 		})
 
