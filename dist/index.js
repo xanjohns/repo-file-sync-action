@@ -17368,9 +17368,16 @@ class Git {
 		)
 	}
 
+	async create_remote() {
+		return execCmd(
+			`git remote add fork https://${ GITHUB_TOKEN}@${NEW_HEAD}.git`,
+			this.workingDir
+		)
+	}
+
 	async push_to_fork() {
 		return execCmd(
-			`git push -u https://${ GITHUB_TOKEN}@${NEW_HEAD}.git main --force`,
+			`git push -u fork main --force`,
 			this.workingDir	
 		)
 	}
