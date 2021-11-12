@@ -102,7 +102,9 @@ const run = async () => {
 					}
 
 					// Commit and add file to modified array so we later know if there are any changes to actually push
+					core.info(await git.status())
 					await git.commit(message[destExists].commit)
+					core.info(await git.status())
 					modified.push({
 						dest: file.dest,
 						source: file.source,
