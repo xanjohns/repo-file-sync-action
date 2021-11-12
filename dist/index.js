@@ -17530,7 +17530,7 @@ const pathIsDirectory = async (path) => {
 
 const copy = async (src, dest, deleteOrphaned, exclude) => {
 
-	core.debug(`CP: ${ src } TO ${ dest }`)
+	core.info(`CP: ${ src } TO ${ dest }`)
 
 	const filterFunc = (file) => {
 
